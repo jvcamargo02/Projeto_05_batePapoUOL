@@ -4,15 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="images/uol_icon-icons.com_59864.ico" type="image/x-icon">
     <title>Bate-papo UOL</title>
 </head>
 <body>
     
+        <div class="content">
+
+            <div class="main">
+                 
+                <div class="header">
+
+
+                    <img src="images/logo 2.png" alt="Logo UOL">
+                    <ion-icon class="pointer" name="people"></ion-icon>
 
 
 
+
+                </div><!-- header -->
+        
+                <div class="chats">
+
+                    <div class="chat">
+
+                    </div><!-- chat -->
+
+
+                </div><!-- chats -->
+
+
+                <div class="footer">
+
+                    <input class="sendMessage" type="text" placeholder="Escreva aqui...">
+
+                    <ion-icon class="pointer" name="paper-plane-outline"></ion-icon>
+                    
+
+                </div><!-- footer -->
+
+
+
+                <div class="sidebar">
+
+
+
+                </div><!-- sidebar -->
+
+
+            </div><!-- main -->
+
+            <div class="loginScr">
+
+                    <img src="images/logo 2.png" alt="Logo UOL">
+                    <input onclick="calltoActionBtn ()" class="username" type="text" placeholder="Digite seu nome" onfocus="this.placeholder=''; ">
+                    <button onclick="validUser()" class="entrarBtn pointer" type="submit">Entrar</button>
+            
+
+            </div><!-- loginscr -->
+        </div><!-- content -->
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
