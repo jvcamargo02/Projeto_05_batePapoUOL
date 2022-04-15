@@ -82,7 +82,7 @@ function printMessage(messagesData){
             <p class="text">${messagesData[i].text}</p>
 
         </div><!-- chat -->  `
-            scroll()
+        
         } else if(messagesData[i].type === "message" && (messagesData[i].to === "Todos" || messagesData[i].to === "todos" )){
 
             chat.innerHTML += `<div class="message">
@@ -94,7 +94,7 @@ function printMessage(messagesData){
             <p class="text">${messagesData[i].text}</p>
 
         </div><!-- chat --> `
-            scroll()
+        
         } else {
 
             chat.innerHTML += `<div class="message">
@@ -106,10 +106,10 @@ function printMessage(messagesData){
             <p class="text">${messagesData[i].text}</p>
 
         </div><!-- chat --> `
-            scroll()
+        
         } 
-    }
-
+    } 
+    scroll()
     /* setInterval(consultData,3000) */
 }
 
