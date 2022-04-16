@@ -30,7 +30,7 @@ function validatedUser() {
 
     setInterval(consultData,3000)
     setInterval(consultUsers, 10000)
-    setInterval(checkStatus,5000)
+  /*   setInterval(checkStatus,5000) */
 }
 
 function errorValidUser() {
@@ -82,8 +82,9 @@ function sendMessage() {
     console.log(messagem)
     const sendMessage = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", messagem)
     sendMessage.then(consultData)
-    sendMessage.catch(error => console.log(error))
+    
     inputMessage.value = ""
+    sendMessage.catch(tratarErro)
 }
 
 function checkStatus() {
@@ -92,12 +93,6 @@ function checkStatus() {
     console.log(username)
     const status = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", username)
 
-}
-
-
-function validandoConexão (){
- 
-    setInterval(checkStatus,5000)
 }
 
 function printMessage(messagesData) {
@@ -254,3 +249,8 @@ function errorMsg() {
     }
 }
 
+function tratarErro(error) {
+    if (error.response.status === 400) {
+        window.location.reload();
+    }
+  }
