@@ -1,7 +1,11 @@
 let messagesData;
 let username;
-const chat = document.querySelector(".chats")
+let userTo = "Todos"
+let usersTo;
+let teste = []
 
+const chat = document.querySelector(".chats")
+    
 function calltoActionBtn (){
     const entrarBtn = document.querySelector(".entrarBtn")
 
@@ -13,11 +17,6 @@ function calltoActionBtn (){
 }
 
 
-function consultUsers(){
-
-    const promisseUsers = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants")
-
-}
 
 function validUser (){
 
@@ -36,6 +35,7 @@ function validatedUser (){
     const loginScreen = document.querySelector(".loginScr")
     loginScreen.classList.add("hidden")
     consultData()
+    
 }
 
 function errorValidUser(){
@@ -49,6 +49,8 @@ function consultData (){
 const promisseMessage = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages")
 promisseMessage.then(dataReceive)
 
+const usersPromisse = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants")
+    usersPromisse.then(usersReceiveData)
 }
  consultData()
 
@@ -60,12 +62,30 @@ function dataReceive (message) {
 printMessage(messagesData)
 }
 
+function usersReceiveData (usersPromisse){
+
+    usersTo = usersPromisse.data
+
+
+printUsers(usersTo)    
+}
 
 function sendMessage (){
     const inputMessage = document.querySelector(".sendMessage")
 
     
 
+}
+
+function checkStatus(){ 
+
+    
+    const sendStatus = {
+        name: `${username}`
+      }
+    const status = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", sendStatus)
+    
+    status.then(setInterval(checkStatus,5000))
 }
 
 function printMessage(messagesData){
@@ -109,11 +129,71 @@ function printMessage(messagesData){
         
         } 
     } 
-    scroll()
     /* setInterval(consultData,3000) */
 }
 
 
-function scroll (){
-    chat.scrollIntoView()
+function printUsers (usersTo){
+
+    let usersBtn = document.querySelector(".specificUser")
+    usersBtn.innerHTML = ""
+    
+    checkStatus()
+
+    for (let i = 0; i < usersTo.length ; i++ ) {
+
+        usersBtn.innerHTML = usersBtn.innerHTML + `
+            <button class="userBtn">
+            <ion-icon class="ionicon" name="person-circle"></ion-icon>
+            <p>${usersTo[i].name}</p>
+            <ion-icon class="check hidden" name="checkmark"></ion-icon>
+        </button>
+        `
+    
+    }
 }
+
+
+function quitSidebar (){
+
+    const sidebar = document.querySelector(".sidebar")
+
+    sidebar.classList.add("hidden")
+  
+}
+
+
+function sidebarShow(){
+
+    const sidebar = document.querySelector(".sidebar")
+
+    sidebar.classList.remove("hidden")
+
+}
+
+
+function sendMessage (){
+    
+  
+
+}
+
+
+function messageTo (){
+
+    const lineMessageTo = document.querySelector(".messageTo")
+
+
+    lineMessageTo.innerHTML = `<p>Enviando para ${userTo} (Reservadamente)</p>`
+}
+messageTo()
+
+
+
+function deuBom(){
+
+    setInterval(checkStatus, 5000)
+
+}
+
+

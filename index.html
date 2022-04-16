@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="images/uol_icon-icons.com_59864.ico" type="image/x-icon">
     <title>Bate-papo UOL</title>
 </head>
@@ -19,7 +22,7 @@
 
 
                     <img src="images/logo 2.png" alt="Logo UOL">
-                    <ion-icon class="pointer" name="people"></ion-icon>
+                    <ion-icon class="pointer" onclick="sidebarShow()" name="people"></ion-icon>
 
 
 
@@ -38,20 +41,19 @@
 
                 <div class="footer">
 
-                    <input class="sendMessage" type="text" placeholder="Escreva aqui...">
+                    <div class="sendMessage">
+                    <input class="writeMessage" type="text" placeholder="Escreva aqui...">
 
                     <ion-icon class="pointer" name="paper-plane-outline"></ion-icon>
-                    
+                    </div><!-- sendMessage -->
+                    <div class="messageTo">
+                        
+                    </div>
 
                 </div><!-- footer -->
 
 
 
-                <div class="sidebar">
-
-
-
-                </div><!-- sidebar -->
 
 
             </div><!-- main -->
@@ -59,12 +61,61 @@
             <div class="loginScr">
 
                     <img src="images/logo 2.png" alt="Logo UOL">
-                    <input onclick="calltoActionBtn ()" class="username" type="text" placeholder="Digite seu nome" onfocus="this.placeholder=''; ">
+                    <input class="username" type="text" placeholder="Digite seu nome" onfocus="this.placeholder=''; ">
                     <button onclick="validUser()" class="entrarBtn pointer" type="submit">Entrar</button>
             
 
-            </div><!-- loginscr -->
+            </div><!-- loginscr -->  
+            <div class="sidebar hidden" >
+                <div class="sidebarContent">
+
+                    <div class="chooseUser">
+                    <p class="sidebarTitle">Escolha um contato para enviar mensagem:</p>
+
+                    <div class="usersBox">
+                    
+                        <div class="everyAllUsers">
+                        <button class="userBtn">
+                            <ion-icon class="ionicon" name="people"></ion-icon>
+                            <p>Todos</p>
+                            <ion-icon class="check hidden" name="checkmark"></ion-icon>  
+                        </button>
+                        </div><!-- everyAllUsers -->
+                        <div class="specificUser">
+                         
+
+                        </div><!-- specificUsers -->
+
+
+                    </div><!-- usersBox -->
+
+                    <div class="chooseVisibility">
+                        <p>Escolha a visibilidade:</p>
+
+                        <button class="userBtn">
+                            <ion-icon class="ionicon" name="lock-open"></ion-icon>
+                            <p>Público</p>
+                            <ion-icon class="check hidden" name="checkmark"></ion-icon>
+                        </button>
+
+                        <button class="userBtn">
+                            <ion-icon class="ionicon" name="lock-closed"></ion-icon>
+                            <p>Reservadamente</p>
+                            <ion-icon class="check hidden" name="checkmark"></ion-icon>
+                        </button>
+
+
+                    </div><!-- chososeVisibility -->
+                    </div><!-- chooseUser -->
+                </div><!-- sidebarContent -->
+                        
+                <div class="sidebarExit"onclick="quitSidebar()">
+
+
+                </div>
+            </div><!-- sidebar -->
         </div><!-- content -->
+
 
 
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
