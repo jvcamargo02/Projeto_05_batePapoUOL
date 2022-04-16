@@ -270,11 +270,35 @@ position: absolute;
     padding: 0;
 }
 
+
+.visibilityBtn{
+    width: 100%;
+    height: 36px;
+    border: none;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    font-size: 19px;
+    margin-bottom: 4px;
+    padding: 0;
+}
+
+
 .check{
+    margin-left: auto;
+    color: white;
+}
+
+
+.checkSelect{
     margin-left: auto;
     color: rgb(0, 209, 0);
 }
 
+.visibilitySelect{
+    margin-left: auto;
+    color: rgb(0, 209, 0);
+}
 .chooseUser{
     height: 95%;
 }

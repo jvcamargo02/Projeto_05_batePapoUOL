@@ -44,7 +44,7 @@
                     <div class="sendMessage">
                     <input class="writeMessage" type="text" placeholder="Escreva aqui...">
 
-                    <ion-icon class="pointer" name="paper-plane-outline"></ion-icon>
+                    <ion-icon onclick="sendMessage()" class="pointer" name="paper-plane-outline"></ion-icon>
                     </div><!-- sendMessage -->
                     <div class="messageTo">
                         
@@ -75,10 +75,10 @@
                     <div class="usersBox">
                     
                         <div class="everyAllUsers">
-                        <button class="userBtn">
+                        <button onclick="selectUserTo(this)" class="userBtn">
                             <ion-icon class="ionicon" name="people"></ion-icon>
                             <p>Todos</p>
-                            <ion-icon class="check hidden" name="checkmark"></ion-icon>  
+                            <ion-icon class="check checkSelect" name="checkmark"></ion-icon>  
                         </button>
                         </div><!-- everyAllUsers -->
                         <div class="specificUser">
@@ -92,16 +92,16 @@
                     <div class="chooseVisibility">
                         <p>Escolha a visibilidade:</p>
 
-                        <button class="userBtn">
+                        <button onclick="visibilitySelect(this)" class="visibilityBtn">
                             <ion-icon class="ionicon" name="lock-open"></ion-icon>
                             <p>Público</p>
-                            <ion-icon class="check hidden" name="checkmark"></ion-icon>
+                            <ion-icon class="check visibilitySelect" name="checkmark"></ion-icon>
                         </button>
 
-                        <button class="userBtn">
+                        <button onclick="visibilitySelect(this)" class="visibilityBtn">
                             <ion-icon class="ionicon" name="lock-closed"></ion-icon>
                             <p>Reservadamente</p>
-                            <ion-icon class="check hidden" name="checkmark"></ion-icon>
+                            <ion-icon class="check" name="checkmark"></ion-icon>
                         </button>
 
 
