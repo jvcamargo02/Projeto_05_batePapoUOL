@@ -75,7 +75,8 @@ function usersReceiveData(usersPromisse) {
 }
 
 function sendMessage() {
-
+    
+    
     let inputMessage = document.querySelector(".writeMessage")
     const messagem = {
         from: userFrom,
@@ -83,7 +84,7 @@ function sendMessage() {
         text: inputMessage.value,
         type: visibilityApi,
     }
-
+    
     const sendMessage = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", messagem)
     sendMessage.then(consultData)
     
@@ -99,7 +100,7 @@ function checkStatus() {
 
 function printMessage(messagesData) {
 
-
+ 
     chat.innerHTML = "";
 
     for (let i = 0; i < messagesData.length; i++) {
@@ -124,7 +125,7 @@ function printMessage(messagesData) {
 
         </div><!-- chat --> `
 
-        } else if (messagesData[i].to === userFrom || messagesData[i].from === userFrom) {
+        } else if (messagesData[i].type === "message") {
 
             chat.innerHTML += `<div class="message reservedMessage">
 
@@ -136,9 +137,21 @@ function printMessage(messagesData) {
 
         </div><!-- chat --> `
 
-        } chat.lastElementChild.scrollIntoView()
-    }
+        }else if (messagesData[i].to === userFrom || messagesData[i].from === userFrom) {
 
+            chat.innerHTML += `<div class="message reservedMessage">
+
+            <p class="time">(${messagesData[i].time})&#160;</p>
+            <p class="user from">${messagesData[i].from} &#160; </p>
+            <p class="user" >para &#160; </p>
+            <p class="user to">${messagesData[i].to} &#160; </p>
+            <p class="text">${messagesData[i].text}</p>
+
+        </div><!-- chat --> `
+
+        }
+    }
+   chat.lastElementChild.scrollIntoView()
 }
 
 
@@ -240,19 +253,41 @@ function errorMsg() {
 
 
     if (userTo === "Todos" && visibility === "Reservadamente") {
-        const checkSelect = document.querySelector(".checkSelect")
-        checkSelect.classList.remove("checkSelect")
-        const visibilitySelect = document.querySelector(".visibilitySelect")
-        visibilitySelect.classList.remove("visibilitySelect")
-        userTo = "Todos"
-        visibility = "Público"
-        alert("Escolha um usuário especifico para enviar uma mensagem reservada")
-        messageTo()
+
+    const visibilitySelect = document.querySelector(".visibilitySelect")
+    const checkSelect = document.querySelector(".checkSelect")
+
+        if(visibilitySelect === null){
+            checkSelect.classList.remove("checkSelect")
+            userTo = "Todos"
+            visibility = "Público"
+            alert("Escolha um usuário especifico para enviar uma mensagem reservada")
+            messageTo()
+            messageType()
+        } else if (checkSelect === null){
+            visibilitySelect.classList.remove("visibilitySelect")
+            userTo = "Todos"
+            visibility = "Público"
+            alert("Escolha um usuário especifico para enviar uma mensagem reservada")
+            messageTo()
+            messageType()
+        } else {
+            checkSelect.classList.remove("checkSelect")
+            visibilitySelect.classList.remove("visibilitySelect")
+            userTo = "Todos"
+            visibility = "Público"
+            alert("Escolha um usuário especifico para enviar uma mensagem reservada")
+            messageTo()
+            messageType()
+        }
+        
+       
     }
 }
 
 function tratarErro(error) {
     if (error.response.status === 400) {
+
         window.location.reload();
     }
   }
@@ -264,7 +299,6 @@ function tratarErro(error) {
     initPage.classList.add("hidden")
   }
 
-  function eventListener (){
       
     const inputUser = document.querySelector(".username")
     inputUser.addEventListener("keydown", function(e){
@@ -273,15 +307,12 @@ function tratarErro(error) {
         }
     }
     )
-  }
-  
-  function eventListenerMessage (){
+
       
     const inputMessage = document.querySelector(".writeMessage")
-    inputMessage.addEventListener("keydown", function(e){
+    inputMessage.addEventListener("keyup", function(e){
         if(event.key === "Enter"){
             sendMessage()
         }
     }
     )
-  }
