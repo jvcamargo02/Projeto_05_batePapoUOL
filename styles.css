@@ -10,23 +10,38 @@
     background-color: #e5e5e5;
 }
 
-.loginScr{
+.initScr{
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     top: 0; bottom: 0px;
     right: 0; left: 0px;
-    z-index: 2;
+    z-index: 1;
     position: fixed;
     background-color: white;
 
 }
 
+.loginScr{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-.loginScr > img {
+.load{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 56px;
+
+}
+
+.initScr > * > img {
 
     width: 130px;
     height: 92px;

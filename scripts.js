@@ -25,12 +25,16 @@ function validUser() {
 
 function validatedUser() {
     const loginScreen = document.querySelector(".loginScr")
+    const loadPage = document.querySelector(".load")
     loginScreen.classList.add("hidden")
+    loadPage.classList.remove("hidden")
 
 
+    setTimeout(closeLoadPage, 10000)
     setInterval(consultData,3000)
     setInterval(consultUsers, 10000)
-  /*   setInterval(checkStatus,5000) */
+    setInterval(checkStatus,5000)
+
 }
 
 function errorValidUser() {
@@ -79,7 +83,7 @@ function sendMessage() {
         text: inputMessage.value,
         type: visibilityApi,
     }
-    console.log(messagem)
+
     const sendMessage = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", messagem)
     sendMessage.then(consultData)
     
@@ -89,8 +93,6 @@ function sendMessage() {
 
 function checkStatus() {
 
-
-    console.log(username)
     const status = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", username)
 
 }
@@ -134,7 +136,7 @@ function printMessage(messagesData) {
 
         </div><!-- chat --> `
 
-        }
+        } chat.lastElementChild.scrollIntoView()
     }
 
 }
@@ -253,4 +255,33 @@ function tratarErro(error) {
     if (error.response.status === 400) {
         window.location.reload();
     }
+  }
+
+  function closeLoadPage(){
+
+    const initPage = document.querySelector(".initScr")
+
+    initPage.classList.add("hidden")
+  }
+
+  function eventListener (){
+      
+    const inputUser = document.querySelector(".username")
+    inputUser.addEventListener("keydown", function(e){
+        if(event.key === "Enter"){
+            validUser()
+        }
+    }
+    )
+  }
+  
+  function eventListenerMessage (){
+      
+    const inputMessage = document.querySelector(".writeMessage")
+    inputMessage.addEventListener("keydown", function(e){
+        if(event.key === "Enter"){
+            sendMessage()
+        }
+    }
+    )
   }
