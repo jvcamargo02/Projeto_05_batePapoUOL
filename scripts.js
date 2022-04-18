@@ -6,7 +6,6 @@ let userFrom;
 let visibility = "Público"
 let visibilityApi = "message"
 let teste;
-
 const chat = document.querySelector(".chats")
 
 function validUser() {
@@ -29,8 +28,12 @@ function validatedUser() {
     loginScreen.classList.add("hidden")
     loadPage.classList.remove("hidden")
 
+    setTimeout(closeLoadPage, 1500)
+    consultData()
+    consultUsers()
+    checkStatus()
 
-    setTimeout(closeLoadPage, 10000)
+
     setInterval(consultData,3000)
     setInterval(consultUsers, 10000)
     setInterval(checkStatus,5000)
